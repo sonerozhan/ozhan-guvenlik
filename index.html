@@ -154,6 +154,7 @@
             display: flex;
             align-items: center;
             gap: 1.2rem;
+            flex-wrap: wrap;
         }
         nav a {
             color: var(--text-muted);
@@ -366,7 +367,86 @@
             color: var(--accent);
             margin-bottom: 1rem;
         }
-        /* Müşteri Yorumları Slider */
+        /* Hizmet Bölgeleri */
+        .regions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.5rem;
+        }
+        .region-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            padding: 1.8rem;
+            border-radius: 12px;
+            text-align: center;
+            transition: transform 0.3s, border-color 0.3s, background 0.3s;
+        }
+        .region-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent);
+        }
+        .region-card i {
+            font-size: 2rem;
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+        .region-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.4rem;
+        }
+        .region-card p {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+        /* Blog / Teknik İpuçları */
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+        .blog-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: transform 0.3s, border-color 0.3s, background 0.3s;
+        }
+        .blog-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent);
+        }
+        .blog-content {
+            padding: 2rem;
+        }
+        .blog-date {
+            color: var(--accent);
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+        .blog-card h3 {
+            font-size: 1.25rem;
+            margin-bottom: 0.8rem;
+        }
+        .blog-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 1.2rem;
+        }
+        .blog-link {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+        .blog-link:hover {
+            text-decoration: underline;
+        }
+        /* Müşteri Yorumları */
         .testimonials-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -679,10 +759,41 @@
             margin-top: 4rem;
             transition: background 0.3s, border-color 0.3s;
         }
-        .whatsapp-float {
+
+        /* Canlı WhatsApp Destek Balonu */
+        .whatsapp-widget-container {
             position: fixed;
             bottom: 30px;
             right: 30px;
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 10px;
+        }
+        .whatsapp-tooltip {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            color: var(--text-main);
+            padding: 0.75rem 1rem;
+            border-radius: 12px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            animation: bounceTooltip 3s infinite;
+        }
+        .whatsapp-tooltip span {
+            color: #25d366;
+            font-weight: 700;
+        }
+        @keyframes bounceTooltip {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+        }
+        .whatsapp-float {
             background: #25d366;
             color: white;
             width: 65px;
@@ -693,7 +804,6 @@
             justify-content: center;
             font-size: 2.2rem;
             box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
-            z-index: 1000;
             text-decoration: none;
             transition: transform 0.3s;
         }
@@ -729,7 +839,8 @@
             <a href="#hizmetler">Faaliyet Alanları</a>
             <a href="#hesaplayici">Fiyat Hesapla</a>
             <a href="#projeler">Projeler</a>
-            <a href="#kadro">Yönetim</a>
+            <a href="#bolgeler">Bölgeler</a>
+            <a href="#blog">Blog</a>
             <a href="#sss">S.S.S.</a>
             <button class="theme-toggle-btn" onclick="toggleTheme()" title="Tema Değiştir">
                 <i class="fa-solid fa-moon" id="themeIcon"></i>
@@ -869,6 +980,70 @@
                     <span class="project-tag">IT Operasyon & Destek</span>
                     <h3>Kurumsal Bakım ve Donanım Yönetimi</h3>
                     <p>Yüzlerce son kullanıcı bilgisayarı, çevre birimleri ve yazıcı filosunun kesintisiz yönetimi ve acil mühendislik destek hizmetleri.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hizmet Bölgelerimiz (SEO Odaklı) -->
+    <div class="container" id="bolgeler" style="padding-bottom: 0;">
+        <div class="section-title">
+            <h2>Hizmet Bölgelerimiz</h2>
+            <p>Gaziantep merkez ve çevre sanayi bölgelerinde hızlı teknik servis ve keşif</p>
+        </div>
+        <div class="regions-grid">
+            <div class="region-card">
+                <i class="fa-solid fa-city"></i>
+                <h3>Şahinbey</h3>
+                <p>Merkez mahalleler, iş yerleri, konut siteleri ve kurumsal yapılar için hızlı servis ağı.</p>
+            </div>
+            <div class="region-card">
+                <i class="fa-solid fa-building-shield"></i>
+                <h3>Şehitkamil</h3>
+                <p>Plazalar, hastaneler, özel işletmeler ve sanayi ofisleri için anahtar teslim altyapı.</p>
+            </div>
+            <div class="region-card">
+                <i class="fa-solid fa-industry"></i>
+                <h3>Organize Sanayi Bölgesi (OSB)</h3>
+                <p>Fabrikalar, üretim tesisleri ve geniş depolama alanları için çevre güvenliği ve fiber ağlar.</p>
+            </div>
+            <div class="region-card">
+                <i class="fa-solid fa-map-location-dot"></i>
+                <h3>Çevre İlçeler & İller</h3>
+                <p>Gaziantep çevre ilçeleri ve talebe göre komşu illere profesyonel proje desteği.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Blog / Teknik İpuçları -->
+    <div class="container" id="blog" style="padding-bottom: 0;">
+        <div class="section-title">
+            <h2>Teknik İpuçları & Rehberler</h2>
+            <p>Güvenlik sistemleri ve network altyapıları hakkında bilmeniz gerekenler</p>
+        </div>
+        <div class="blog-grid">
+            <div class="blog-card">
+                <div class="blog-content">
+                    <span class="blog-date"><i class="fa-regular fa-calendar"></i> Temmuz 2026</span>
+                    <h3>Güvenlik Kamerası Seçerken Nelere Dikkat Edilmeli?</h3>
+                    <p>IP kamera mı yoksa AHD sistemler mi tercih edilmeli? Çözünürlük, gece görüş mesafesi ve lens açıları hakkında bilmeniz gereken teknik detaylar.</p>
+                    <a href="#iletisim" class="blog-link">Detaylı Bilgi Al <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+            </div>
+            <div class="blog-card">
+                <div class="blog-content">
+                    <span class="blog-date"><i class="fa-regular fa-calendar"></i> Temmuz 2026</span>
+                    <h3>İş Yerlerinde Yapısal Kablolama Neden Önemlidir?</h3>
+                    <p>Karmaşık kablo kalabalığından kurtulmak, veri kaybını önlemek ve gigabit hızında kesintisiz bir network altyapısı kurmanın püf noktaları.</p>
+                    <a href="#iletisim" class="blog-link">Detaylı Bilgi Al <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+            </div>
+            <div class="blog-card">
+                <div class="blog-content">
+                    <span class="blog-date"><i class="fa-regular fa-calendar"></i> Temmuz 2026</span>
+                    <h3>Kamera Sistemlerinde Düzenli Bakımın Faydaları</h3>
+                    <p>Kayıt cihazı (NVR/DVR) disk sağlığı, lens temizliği ve güç kaynaklarının kontrolü ile sisteminizin ömrünü nasıl uzatabilirsiniz?</p>
+                    <a href="#iletisim" class="blog-link">Detaylı Bilgi Al <i class="fa-solid fa-arrow-right"></i></a>
                 </div>
             </div>
         </div>
@@ -1041,9 +1216,15 @@
         </div>
     </div>
 
-    <a href="https://wa.me/905316655279" class="whatsapp-float" target="_blank">
-        <i class="fa-brands fa-whatsapp"></i>
-    </a>
+    <!-- Sabit Canlı WhatsApp Destek Balonu -->
+    <div class="whatsapp-widget-container">
+        <div class="whatsapp-tooltip">
+            <i class="fa-solid fa-circle" style="color: #22c55e; font-size: 8px;"></i> Bir soru mu sordunuz? <span>Hemen Uzmana Bağlanın</span>
+        </div>
+        <a href="https://wa.me/905316655279?text=Merhaba,%20web%20sitenizden%20ulaşıyorum,%20bilgi%20almak%20istiyorum." class="whatsapp-float" target="_blank" title="WhatsApp ile İletişime Geç">
+            <i class="fa-brands fa-whatsapp"></i>
+        </a>
+    </div>
 
     <footer>
         <p>&copy; 2026 Özhan Güvenlik & Zayıf Akım Sistemleri. Tüm hakları saklıdır.</p>
