@@ -10,7 +10,7 @@
             --bg-color: #0b0f19;
             --card-bg: #131b2e;
             --accent: #3b82f6;
-            --accent-glow: rgba(59, 130, 246, 0.5);
+            --accent-glow: rgba(59, 130, 246, 0.4);
             --text-main: #f8fafc;
             --text-muted: #94a3b8;
             --border: #1e293b;
@@ -134,38 +134,206 @@
             color: var(--text-muted);
             font-size: 0.95rem;
         }
-        .contact-box {
+        /* İstatistikler */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 4rem;
+        }
+        .stat-card {
             background: var(--card-bg);
-            border-radius: 12px;
-            padding: 4rem 2rem;
             border: 1px solid var(--border);
+            padding: 2rem;
+            border-radius: 12px;
             text-align: center;
         }
-        .contact-info {
+        .stat-card h3 {
+            font-size: 2.2rem;
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+        }
+        .stat-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+        /* Yönetim ve Kadro */
+        .team-container {
             display: flex;
             justify-content: center;
-            gap: 3rem;
-            margin-top: 2.5rem;
-            flex-wrap: wrap;
+            margin-bottom: 4rem;
         }
-        .contact-item {
+        .team-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 3rem 2rem;
+            text-align: center;
+            max-width: 450px;
+            width: 100%;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+        .team-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 20%;
+            right: 20%;
+            height: 3px;
+            background: var(--accent);
+            border-radius: 3px;
+        }
+        .team-avatar {
+            width: 90px;
+            height: 90px;
+            background: #1e293b;
+            border: 2px solid var(--accent);
+            border-radius: 50%;
             display: flex;
             align-items: center;
-            gap: 1rem;
-            font-size: 1.1rem;
-            color: var(--text-main);
+            justify-content: center;
+            margin: 0 auto 1.5rem auto;
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--accent);
         }
-        .contact-item a {
+        .team-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.25rem;
+        }
+        .team-card .title {
+            color: var(--accent);
+            font-weight: 600;
+            margin-bottom: 1.2rem;
+            font-size: 1rem;
+        }
+        .team-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+        /* Neden Biz */
+        .why-us {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 3.5rem;
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+        .why-us h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+        .why-us p {
+            color: var(--text-muted);
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 1.05rem;
+        }
+        /* İletişim & Form Bölümü */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 2.5rem;
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 3.5rem;
+        }
+        @media (max-width: 900px) {
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        .contact-left h2 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+        .contact-left > p {
+            color: var(--text-muted);
+            margin-bottom: 2.5rem;
+            font-size: 0.95rem;
+        }
+        .info-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            background: rgba(30, 41, 59, 0.4);
+            padding: 1.2rem;
+            border-radius: 10px;
+            border: 1px solid var(--border);
+        }
+        .info-item i {
+            color: var(--accent);
+            font-size: 1.3rem;
+            margin-top: 0.2rem;
+        }
+        .info-item h4 {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 0.2rem;
+        }
+        .info-item p, .info-item a {
             color: var(--text-main);
             text-decoration: none;
-            transition: color 0.3s;
+            font-size: 1rem;
+            font-weight: 500;
         }
-        .contact-item a:hover {
+        .info-item a:hover {
             color: var(--accent);
         }
-        .contact-item i {
-            color: var(--accent);
-            font-size: 1.4rem;
+        .form-group {
+            margin-bottom: 1.2rem;
+        }
+        .form-group label {
+            display: block;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 0.4rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+        .form-control {
+            width: 100%;
+            background: #0b0f19;
+            border: 1px solid var(--border);
+            padding: 0.85rem 1rem;
+            border-radius: 8px;
+            color: var(--text-main);
+            font-size: 0.95rem;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+        .form-control:focus {
+            border-color: var(--accent);
+        }
+        textarea.form-control {
+            resize: vertical;
+            min-height: 100px;
+        }
+        .form-btn {
+            width: 100%;
+            background: var(--accent);
+            color: white;
+            border: none;
+            padding: 1rem;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            box-shadow: 0 0 15px var(--accent-glow);
+            transition: background 0.3s, transform 0.2s;
+            margin-top: 1.5rem;
+        }
+        .form-btn:hover {
+            background: #2563eb;
+            transform: translateY(-2px);
         }
         footer {
             background: var(--card-bg);
@@ -205,6 +373,7 @@
         <div class="logo">ÖZHAN <span>Güvenlik & Zayıf Akım</span></div>
         <nav>
             <a href="#hizmetler">Hizmetler</a>
+            <a href="#kadro">Yönetim</a>
             <a href="#iletisim">İletişim</a>
         </nav>
     </header>
@@ -214,6 +383,28 @@
         <p>Yüksek performanslı kamera sistemleri, kusursuz zayıf akım altyapısı ve kesintisiz IT desteği ile işletmenizi güvence altına alıyoruz.</p>
         <a href="#iletisim" class="btn">Hemen Teklif Al</a>
     </section>
+
+    <!-- İstatistikler -->
+    <div class="container" style="padding-bottom: 0;">
+        <div class="stats-grid">
+            <div class="stat-card">
+                <h3>%100</h3>
+                <p>Müşteri Memnuniyeti</p>
+            </div>
+            <div class="stat-card">
+                <h3>7/24</h3>
+                <p>Kesintisiz Destek</p>
+            </div>
+            <div class="stat-card">
+                <h3>Proje</h3>
+                <p>Özel Keşif ve Mühendislik</p>
+            </div>
+            <div class="stat-card">
+                <h3>1. Sınıf</h3>
+                <p>Donanım Kalitesi</p>
+            </div>
+        </div>
+    </div>
 
     <div class="container" id="hizmetler">
         <div class="section-title">
@@ -244,21 +435,98 @@
         </div>
     </div>
 
-    <div class="container">
-        <div class="contact-box" id="iletisim">
-            <div class="section-title" style="margin-bottom: 1rem;">
-                <h2>Bize Ulaşın</h2>
-                <p>Projeleriniz, keşif talepleriniz ve teknik destek ihtiyaçlarınız için dilediğiniz zaman ulaşabilirsiniz.</p>
+    <!-- Yönetim ve Kadro -->
+    <div class="container" id="kadro" style="padding-top: 0; padding-bottom: 0;">
+        <div class="section-title">
+            <h2>Yönetim ve Kadro</h2>
+            <p>Güvenliğiniz için tecrübeli ekibimizle sahadayız</p>
+        </div>
+        <div class="team-container">
+            <div class="team-card">
+                <div class="team-avatar">S.Ö</div>
+                <h3>Soner Özhan</h3>
+                <div class="title">Kurucu & Teknik Yönetici</div>
+                <p>Zayıf akım, elektronik güvenlik sistemleri ve entegre proje yönetimi alanında uzmanlaşmış profesyonel yaklaşım.</p>
             </div>
-            <div class="contact-info">
-                <div class="contact-item">
-                    <i class="fa-solid fa-phone"></i>
-                    <a href="tel:05316655279">0531 665 52 79</a>
+        </div>
+    </div>
+
+    <!-- Neden Biz -->
+    <div class="container" style="padding-bottom: 0;">
+        <div class="why-us">
+            <h2>Neden Bizi Tercih Etmelisiniz?</h2>
+            <p>Sektördeki en son yenilikleri ve teknolojileri yakından takip ediyor; ücretsiz keşif aşamasından montaj sonrası teknik servise kadar tüm süreçlerde koşulsuz müşteri memnuniyeti ilkesiyle çalışıyoruz. Dayanıklı malzeme, kusursuz işçilik ve kesintisiz destek garantisi sunuyoruz.</p>
+        </div>
+    </div>
+
+    <!-- İletişim ve Form -->
+    <div class="container" id="iletisim">
+        <div class="contact-grid">
+            <div class="contact-left">
+                <h2>İletişim Bilgileri</h2>
+                <p>Projeleriniz, keşif talepleriniz ve güvenlik ihtiyaçlarınız için formu doldurarak doğrudan WhatsApp üzerinden anında bizimle görüşebilirsiniz.</p>
+                
+                <div class="info-item">
+                    <i class="fa-solid fa-location-dot"></i>
+                    <div>
+                        <h4>Ofis Adresi</h4>
+                        <p>Şahinbey / Gaziantep</p>
+                    </div>
                 </div>
-                <div class="contact-item">
+
+                <div class="info-item">
                     <i class="fa-solid fa-envelope"></i>
-                    <a href="mailto:desonerozhan660@gmail.com">desonerozhan660@gmail.com</a>
+                    <div>
+                        <h4>E-Posta Adresi</h4>
+                        <a href="mailto:sonerozhan660@gmail.com">sonerozhan660@gmail.com</a>
+                    </div>
                 </div>
+
+                <div class="info-item">
+                    <i class="fa-solid fa-phone"></i>
+                    <div>
+                        <h4>WhatsApp / Telefon</h4>
+                        <a href="tel:05316655279">0531 665 52 79</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="contact-right">
+                <div style="margin-bottom: 1.5rem;">
+                    <h3 style="font-size: 1.4rem; margin-bottom: 0.3rem;">Hızlı Teklif / Mesaj Formu</h3>
+                    <p style="color: var(--text-muted); font-size: 0.9rem;">Bilgilerinizi girin, mesajınız doğrudan WhatsApp'a iletilsin.</p>
+                </div>
+                
+                <form id="whatsappForm" onsubmit="sendToWhatsApp(event)">
+                    <div class="form-group">
+                        <label>ADINIZ SOYADINIZ</label>
+                        <input type="text" id="name" class="form-control" placeholder="Adınızı giriniz" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>TELEFON NUMARANIZ</label>
+                        <input type="tel" id="phone" class="form-control" placeholder="05XX XXX XX XX" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>İLGİLENDİĞİNİZ SİSTEM</label>
+                        <select id="service" class="form-control">
+                            <option value="Güvenlik Kamera Sistemleri">Güvenlik Kamera Sistemleri</option>
+                            <option value="Zayıf Akım & Network">Zayıf Akım & Network</option>
+                            <option value="Son Kullanıcı IT Destek">Son Kullanıcı IT Destek</option>
+                            <option value="Alarm & Güvenlik Sistemleri">Alarm & Güvenlik Sistemleri</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>MESAJINIZ / DETAYLAR</label>
+                        <textarea id="message" class="form-control" placeholder="Projeniz veya talebiniz hakkında kısa bilgi verin..."></textarea>
+                    </div>
+
+                    <button type="submit" class="form-btn">
+                        <i class="fa-brands fa-whatsapp" style="font-size: 1.2rem;"></i> WhatsApp ile Gönder
+                    </button>
+                </form>
             </div>
         </div>
     </div>
@@ -270,6 +538,20 @@
     <footer>
         <p>&copy; 2026 Özhan Güvenlik & Zayıf Akım Sistemleri. Tüm hakları saklıdır.</p>
     </footer>
+
+    <script>
+        function sendToWhatsApp(e) {
+            e.preventDefault();
+            const name = document.getElementById('name').value;
+            const phone = document.getElementById('phone').value;
+            const service = document.getElementById('service').value;
+            const message = document.getElementById('message').value;
+
+            const text = `Merhaba, web sitenizden ulaşıyorum.%0A%0A*Ad Soyad:* ${name}%0A*Telefon:* ${phone}%0A*İlgilenilen Sistem:* ${service}%0A*Mesaj:* ${message}`;
+            
+            window.open(`https://wa.me/905316655279?text=${text}`, '_blank');
+        }
+    </script>
 
 </body>
 </html>
