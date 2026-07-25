@@ -9,8 +9,8 @@
         :root {
             --bg-color: #0b0f19;
             --card-bg: #131b2e;
-            --accent: #3b82f6;
-            --accent-glow: rgba(59, 130, 246, 0.4);
+            --accent: #0ea5e9;
+            --accent-glow: rgba(14, 165, 233, 0.4);
             --text-main: #f8fafc;
             --text-muted: #94a3b8;
             --border: #1e293b;
@@ -27,11 +27,53 @@
             color: var(--text-main);
             line-height: 1.6;
         }
+        /* Üst Bilgi Çubuğu (Topbar) */
+        .topbar {
+            background: #070911;
+            border-bottom: 1px solid var(--border);
+            padding: 0.6rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        .topbar-left, .topbar-right {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+        .topbar item, .topbar a {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        .topbar a:hover {
+            color: var(--accent);
+        }
+        .topbar i {
+            color: var(--accent);
+        }
+        .support-badge {
+            background: rgba(14, 165, 233, 0.1);
+            border: 1px solid rgba(14, 165, 233, 0.3);
+            color: var(--accent);
+            padding: 0.2rem 0.8rem;
+            border-radius: 20px;
+            font-weight: 600;
+        }
+        /* Ana Header ve Logo */
         header {
-            background: rgba(11, 15, 25, 0.9);
+            background: rgba(11, 15, 25, 0.95);
             backdrop-filter: blur(10px);
             border-bottom: 1px solid var(--border);
-            padding: 1.2rem 2rem;
+            padding: 1rem 2rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -39,24 +81,62 @@
             top: 0;
             z-index: 100;
         }
-        .logo {
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            text-decoration: none;
+        }
+        .logo-box {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, var(--accent), #2563eb);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             font-size: 1.25rem;
+            font-weight: 800;
+            color: white;
+            box-shadow: 0 0 15px var(--accent-glow);
+            letter-spacing: -1px;
+        }
+        .logo-text {
+            font-size: 1.2rem;
             font-weight: 700;
-            letter-spacing: 1px;
+            letter-spacing: 0.5px;
             color: var(--text-main);
         }
-        .logo span {
+        .logo-text span {
             color: var(--accent);
+        }
+        nav {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
         }
         nav a {
             color: var(--text-muted);
             text-decoration: none;
-            margin-left: 2rem;
             font-weight: 500;
+            font-size: 0.95rem;
             transition: color 0.3s;
         }
         nav a:hover {
             color: var(--accent);
+        }
+        .nav-btn {
+            background: var(--accent);
+            color: white !important;
+            padding: 0.6rem 1.4rem;
+            border-radius: 8px;
+            font-weight: 600;
+            box-shadow: 0 0 15px var(--accent-glow);
+            transition: background 0.3s, transform 0.2s !important;
+        }
+        .nav-btn:hover {
+            background: #0284c7;
+            transform: translateY(-2px);
         }
         .hero {
             padding: 7rem 2rem;
@@ -87,7 +167,7 @@
         }
         .btn:hover {
             transform: translateY(-2px);
-            background: #2563eb;
+            background: #0284c7;
         }
         .container {
             max-width: 1150px;
@@ -245,6 +325,9 @@
             .contact-grid {
                 grid-template-columns: 1fr;
             }
+            .topbar {
+                display: none;
+            }
         }
         .contact-left h2 {
             font-size: 2rem;
@@ -332,7 +415,7 @@
             margin-top: 1.5rem;
         }
         .form-btn:hover {
-            background: #2563eb;
+            background: #0284c7;
             transform: translateY(-2px);
         }
         footer {
@@ -369,12 +452,31 @@
 </head>
 <body>
 
-    <header>
-        <div class="logo">ÖZHAN <span>Güvenlik & Zayıf Akım</span></div>
+    <!-- Üst Bilgi Çubuğu -->
+    <div class="topbar">
+        <div class="topbar-left">
+            <span><i class="fa-solid fa-location-dot"></i> Şahinbey / Gaziantep</span>
+            <a href="mailto:sonerozhan660@gmail.com"><i class="fa-solid fa-envelope"></i> sonerozhan660@gmail.com</a>
+        </div>
+        <div class="topbar-right">
+            <a href="tel:05316655279"><i class="fa-solid fa-phone"></i> 0531 665 52 79</a>
+            <span class="support-badge">7/24 Teknik Destek</span>
+        </div>
+    </div>
+
+    <!-- Ana Header ve SÖ Logosu -->
+    <header id="anasayfa">
+        <a href="#anasayfa" class="brand">
+            <div class="logo-box">SÖ</div>
+            <div class="logo-text">ÖZHAN <span>GÜVENLİK</span></div>
+        </a>
         <nav>
-            <a href="#hizmetler">Hizmetler</a>
+            <a href="#anasayfa">Ana Sayfa</a>
+            <a href="#hizmetler">Faaliyet Alanları</a>
             <a href="#kadro">Yönetim</a>
+            <a href="#neden-biz">Neden Biz?</a>
             <a href="#iletisim">İletişim</a>
+            <a href="#iletisim" class="nav-btn">Teklif Al</a>
         </nav>
     </header>
 
@@ -408,7 +510,7 @@
 
     <div class="container" id="hizmetler">
         <div class="section-title">
-            <h2>Profesyonel Hizmetlerimiz</h2>
+            <h2>Faaliyet Alanlarımız</h2>
             <p>En son teknoloji ile güvenli ve kararlı sistemler kuruyoruz</p>
         </div>
         <div class="services-grid">
@@ -452,7 +554,7 @@
     </div>
 
     <!-- Neden Biz -->
-    <div class="container" style="padding-bottom: 0;">
+    <div class="container" id="neden-biz" style="padding-bottom: 0;">
         <div class="why-us">
             <h2>Neden Bizi Tercih Etmelisiniz?</h2>
             <p>Sektördeki en son yenilikleri ve teknolojileri yakından takip ediyor; ücretsiz keşif aşamasından montaj sonrası teknik servise kadar tüm süreçlerde koşulsuz müşteri memnuniyeti ilkesiyle çalışıyoruz. Dayanıklı malzeme, kusursuz işçilik ve kesintisiz destek garantisi sunuyoruz.</p>
