@@ -154,7 +154,6 @@
             display: flex;
             align-items: center;
             gap: 1.2rem;
-            flex-wrap: wrap;
         }
         nav a {
             color: var(--text-muted);
@@ -195,6 +194,22 @@
             background: #0284c7;
             transform: translateY(-2px);
         }
+        
+        /* Mobil Menü Butonu (Hamburger) */
+        .mobile-menu-btn {
+            display: none;
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            color: var(--accent);
+            font-size: 1.3rem;
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+
         .hero {
             padding: 7rem 2rem;
             text-align: center;
@@ -658,6 +673,36 @@
             .topbar {
                 display: none;
             }
+            /* Mobil Ekranlar İçin Menü Düzenlemesi */
+            .mobile-menu-btn {
+                display: flex;
+            }
+            nav {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: var(--card-bg);
+                border-bottom: 1px solid var(--border);
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 1.5rem 2rem;
+                gap: 1rem;
+                display: none;
+                box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+            }
+            nav.active {
+                display: flex;
+            }
+            nav a {
+                font-size: 1.1rem;
+                width: 100%;
+                padding: 0.3rem 0;
+            }
+            .nav-btn {
+                width: 100%;
+                text-align: center;
+            }
         }
         .contact-left h2 {
             font-size: 2rem;
@@ -834,18 +879,21 @@
             </div>
             <div class="logo-text">ÖZHAN <span>GÜVENLİK</span></div>
         </a>
-        <nav>
-            <a href="#anasayfa">Ana Sayfa</a>
-            <a href="#hizmetler">Faaliyet Alanları</a>
-            <a href="#hesaplayici">Fiyat Hesapla</a>
-            <a href="#projeler">Projeler</a>
-            <a href="#bolgeler">Bölgeler</a>
-            <a href="#blog">Blog</a>
-            <a href="#sss">S.S.S.</a>
+        <button class="mobile-menu-btn" onclick="toggleMobileMenu()" title="Menüyü Aç">
+            <i class="fa-solid fa-bars" id="menuIcon"></i>
+        </button>
+        <nav id="navMenu">
+            <a href="#anasayfa" onclick="closeMobileMenu()">Ana Sayfa</a>
+            <a href="#hizmetler" onclick="closeMobileMenu()">Faaliyet Alanları</a>
+            <a href="#hesaplayici" onclick="closeMobileMenu()">Fiyat Hesapla</a>
+            <a href="#projeler" onclick="closeMobileMenu()">Projeler</a>
+            <a href="#bolgeler" onclick="closeMobileMenu()">Bölgeler</a>
+            <a href="#blog" onclick="closeMobileMenu()">Blog</a>
+            <a href="#sss" onclick="closeMobileMenu()">S.S.S.</a>
             <button class="theme-toggle-btn" onclick="toggleTheme()" title="Tema Değiştir">
                 <i class="fa-solid fa-moon" id="themeIcon"></i>
             </button>
-            <a href="#iletisim" class="nav-btn">Teklif Al</a>
+            <a href="#iletisim" class="nav-btn" onclick="closeMobileMenu()">Teklif Al</a>
         </nav>
     </header>
 
@@ -1231,6 +1279,29 @@
     </footer>
 
     <script>
+        // Mobil Menü Aç/Kapat Fonksiyonu
+        function toggleMobileMenu() {
+            const nav = document.getElementById('navMenu');
+            const icon = document.getElementById('menuIcon');
+            nav.classList.toggle('active');
+            if (nav.classList.contains('active')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-xmark');
+            } else {
+                icon.classList.remove('fa-xmark');
+                icon.classList.add('fa-bars');
+            }
+        }
+
+        // Mobilde bir bağlantıya tıklandığında menüyü kapat
+        function closeMobileMenu() {
+            const nav = document.getElementById('navMenu');
+            const icon = document.getElementById('menuIcon');
+            nav.classList.remove('active');
+            icon.classList.remove('fa-xmark');
+            icon.classList.add('fa-bars');
+        }
+
         // Tema Değiştirici Fonksiyonu
         function toggleTheme() {
             document.body.classList.toggle('light-theme');
